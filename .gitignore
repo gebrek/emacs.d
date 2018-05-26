@@ -1,0 +1,7 @@
+elpa/
+/session*
+eshell/
+lisp/my-erc.el
+/tramp
+ido.last*
+auto-save-list/
