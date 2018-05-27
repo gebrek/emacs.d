@@ -34,24 +34,31 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
+ '(battery-mode-line-format " %p %t")
  '(blink-matching-paren t)
  '(column-number-mode t)
- '(custom-enabled-themes (quote (light-blue)))
  '(custom-safe-themes
    (quote
-    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
+    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
  '(display-battery-mode t)
  '(display-time-mode t)
  '(erc-fill-column 90)
  '(erc-modules
    (quote
-    (completion spelling hl-nicks netsplit fill button match track readonly networks ring autojoin noncommands irccontrols move-to-prompt stamp menu list)))
+    (completion notifications spelling hl-nicks netsplit fill button match track readonly networks ring autojoin noncommands irccontrols move-to-prompt stamp menu list)))
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
+    (solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
  '(show-paren-mode t)
- '(sml/theme (quote respectful))
+ '(solarized-height-minus-1 1.0)
+ '(solarized-height-plus-1 1.0)
+ '(solarized-height-plus-2 1.0)
+ '(solarized-height-plus-3 1.0)
+ '(solarized-height-plus-4 1.0)
+ '(solarized-high-contrast-mode-line nil)
+ '(solarized-scale-org-headlines nil)
+ '(solarized-use-variable-pitch nil)
  '(text-scale-mode-step 1.1)
  '(tool-bar-mode nil))
 
@@ -61,8 +68,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "LightBlue" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "mlss" :family "Anonymous Pro"))))
- '(erc-timestamp-face ((t (:foreground "magenta4" :weight bold))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "mlss" :family "Anonymous Pro"))))
  '(mode-line ((t (:background "PaleGoldenrod" :foreground "black" :inverse-video nil :box (:line-width -1 :style released-button) :height 1.0))))
  '(show-paren-match ((t (:background "steel blue")))))
 
@@ -149,5 +155,16 @@
 (use-package smart-mode-line
   :ensure t
   :config
-  (setq sml/theme 'respectful)
-  (sml/setup))
+  ;; (setq display-time-format "%m-%d %R")
+  ;; (setq battery-mode-line-format "[%b%p%% %t]")
+
+  (setq sml/theme 'automatic
+	sml/battery-format " %b%p%% %t "
+	display-time-format " %m-%d %R ")
+  (sml/setup)
+  (setq battery-mode-line-format " %b%p%% %t "
+  	display-time-format " %m-%d %R ")
+  (display-time-mode)
+  (display-battery-mode))
+
+(load-theme 'solarized-light)

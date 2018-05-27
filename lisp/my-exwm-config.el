@@ -79,6 +79,8 @@
   ;; Other configurations
   (exwm-config-misc))
 
+(define-key exwm-mode-map [?\C-q] #'exwm-input-send-next-key)
+
 (defun exwm-config--fix/ido-buffer-window-other-frame ()
   "Fix `ido-buffer-window-other-frame'."
   (defalias 'exwm-config-ido-buffer-window-other-frame
@@ -122,12 +124,7 @@ You can find the original one at `exwm-config-ido-buffer-window-other-frame'."
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
-  (fringe-mode 1)
-  ;; Happy mode-line
-  (setq display-time-format "%m-%d %R")
-  (setq battery-mode-line-format "[%b%p%% %t]")
-  (display-battery-mode)
-  (display-time-mode))
+  (fringe-mode 1))
 
 
 ;;; turn off the screen
