@@ -24,6 +24,7 @@
       auto-save-file-name-transforms
       '((".*" "/home/jacob/tmp/" t)))
 
+
 ;;; Variables set thru custom interface
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -46,6 +47,8 @@
  '(erc-modules
    (quote
     (completion notifications spelling hl-nicks netsplit fill button match track readonly networks ring autojoin noncommands irccontrols move-to-prompt stamp menu list)))
+ '(erc-notifications-icon
+   "/usr/share/icons/Adwaita/48x48/status/user-available-symbolic.symbolic.png")
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
@@ -86,6 +89,9 @@
 (package-initialize)
 (package-install 'use-package)
 ;; (package-install 'exwm)
+
+;;; The All-Important Theme
+(load-theme 'solarized-light)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; EXWM Configuration
@@ -167,4 +173,3 @@
   (display-time-mode)
   (display-battery-mode))
 
-(load-theme 'solarized-light)
