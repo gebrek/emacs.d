@@ -50,6 +50,20 @@
  '(erc-notifications-icon
    "/usr/share/icons/Adwaita/48x48/status/user-available-symbolic.symbolic.png")
  '(menu-bar-mode nil)
+ '(org-agenda-files (quote ("~/org/todo.org" "~/org/root.org")))
+ '(org-capture-templates
+   (quote
+    (("t" "todo" entry
+      (file "~/org/todo.org")
+      "* TODO %? %^G")
+     ("n" "note" entry
+      (file "~/org/notes.org")
+      "* %?
+  - Note taken on %U
+  - %a
+"))))
+ '(org-datetree-add-timestamp (quote inactive))
+ '(org-default-notes-file "~/org/notes.org")
  '(package-selected-packages
    (quote
     (solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
