@@ -77,6 +77,7 @@
   ;; Configure Ido
   (exwm-config-ido)
   ;; Other configurations
+  (exwm-config-media)
   (exwm-config-misc))
 
 (define-key exwm-mode-map [?\C-q] #'exwm-input-send-next-key)
@@ -126,6 +127,16 @@ You can find the original one at `exwm-config-ido-buffer-window-other-frame'."
   (scroll-bar-mode -1)
   (fringe-mode 1))
 
+(defun exwm-config-media ()
+  (when (executable-find "pactl")
+    (use-package pulseaudio-control :ensure t)
+    (exwm-input-set-key (kbd "<XF86AudioLowerVolume>") #'pulseaudio-control-decrease-volume)
+    (exwm-input-set-key (kbd "<XF86AudioRaiseVolume>") #'pulseaudio-control-increase-volume)
+    (exwm-input-set-key (kbd "<XF86AudioMute>") #'pulseaudio-control-toggle-current-sink-mute)
+    (exwm-input-set-key (kbd "<XF86AudioPlay>") #'emms-pause)
+    (exwm-input-set-key (kbd "<XF86AudioStop>") #'emms-stop)
+    (exwm-input-set-key (kbd "<XF86AudioPrev>") #'emms-previous)
+    (exwm-input-set-key (kbd "<XF86AudioNext>") #'emms-next)))
 
 ;;; turn off the screen
 (defun ash-screen ()

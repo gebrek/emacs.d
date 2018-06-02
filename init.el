@@ -54,19 +54,19 @@
  '(org-capture-templates
    (quote
     (("t" "todo" entry
-      (file "~/org/todo.org")
-      "* TODO %? %^G")
+      (file+headline "~/org/root.org" "Todo")
+      "** TODO %? %^G")
      ("n" "note" entry
-      (file "~/org/notes.org")
-      "* %?
-  - Note taken on %U
-  - %a
-"))))
+      (file+headline "~/org/root.org" "Notes")
+      "** %?
+   - Note taken on %U
+   - %a "))))
  '(org-datetree-add-timestamp (quote inactive))
  '(org-default-notes-file "~/org/notes.org")
  '(package-selected-packages
    (quote
-    (solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
+    (pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
+ '(pulseaudio-control-volume-step "5%")
  '(show-paren-mode t)
  '(solarized-height-minus-1 1.0)
  '(solarized-height-plus-1 1.0)
