@@ -50,7 +50,8 @@
  '(erc-notifications-icon
    "/usr/share/icons/Adwaita/48x48/status/user-available-symbolic.symbolic.png")
  '(menu-bar-mode nil)
- '(org-agenda-files (quote ("~/org/todo.org" "~/org/root.org")))
+ '(mu4e-maildir "/home/jacob/Maildir/Gmail")
+ '(org-agenda-files (quote ("~/org/root.org")))
  '(org-capture-templates
    (quote
     (("t" "todo" entry
