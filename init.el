@@ -66,7 +66,7 @@
  '(org-default-notes-file "~/org/notes.org")
  '(package-selected-packages
    (quote
-    (pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
+    (use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
  '(pulseaudio-control-volume-step "5%")
  '(show-paren-mode t)
  '(solarized-height-minus-1 1.0)
@@ -103,6 +103,8 @@
 
 (package-initialize)
 (package-install 'use-package)
+;; (use-package use-package-ensure-system-package
+;;   :ensure t)
 ;; (package-install 'exwm)
 
 ;;; The All-Important Theme
@@ -171,7 +173,12 @@
 	 ("C-c l" . org-store-link)
 	 ("C-c c" . org-capture)
 	 ("C-c j" . org-clock-goto)
-	 ("C-c ;" . org-clock-out)))
+	 ("C-c ;" . org-clock-out))
+  :config
+  (add-hook 'org-mode-hook
+	    (lambda ()
+	      (flyspell-mode)
+	      (auto-fill-mode))))
 
 (use-package smart-mode-line
   :ensure t
@@ -188,3 +195,7 @@
   (display-time-mode)
   (display-battery-mode))
 
+(use-package mu4e
+  :ensure-system-package html2text
+  :config
+  (setq mu4e-html2text-command "html2text -utf8 -width 72"))
