@@ -174,7 +174,7 @@
 	 ("C-c c" . org-capture)
 	 ("C-c j" . org-clock-goto)
 	 ("C-c ;" . org-clock-out))
-  :config
+  :init
   (add-hook 'org-mode-hook
 	    (lambda ()
 	      (flyspell-mode)
