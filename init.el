@@ -24,6 +24,9 @@
       auto-save-file-name-transforms
       '((".*" "/home/jacob/tmp/" t)))
 
+;;; Have dired hide hidden directories by default
+;;; This is easily changed with C-u s
+(setq dired-listing-switches "-lFh")
 
 ;;; Variables set thru custom interface
 (custom-set-variables
@@ -41,6 +44,7 @@
  '(custom-safe-themes
    (quote
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
+ '(debug-on-error t)
  '(display-battery-mode t)
  '(display-time-mode t)
  '(erc-fill-column 90)
