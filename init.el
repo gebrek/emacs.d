@@ -44,7 +44,6 @@
  '(custom-safe-themes
    (quote
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
- '(debug-on-error t)
  '(display-battery-mode t)
  '(display-time-mode t)
  '(erc-fill-column 90)
@@ -70,7 +69,7 @@
  '(org-default-notes-file "~/org/notes.org")
  '(package-selected-packages
    (quote
-    (use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
+    (elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
  '(pulseaudio-control-volume-step "5%")
  '(show-paren-mode t)
  '(solarized-height-minus-1 1.0)
@@ -203,3 +202,6 @@
   :ensure-system-package html2text
   :config
   (setq mu4e-html2text-command "html2text -utf8 -width 72"))
+
+(use-package elpy
+  :ensure t)
