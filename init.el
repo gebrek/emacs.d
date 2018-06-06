@@ -204,4 +204,7 @@
   (setq mu4e-html2text-command "html2text -utf8 -width 72"))
 
 (use-package elpy
-  :ensure t)
+  :ensure t
+  :init
+  (setq python-shell-interpreter "python3"
+	elpy-rpc-python-command "python3"))
