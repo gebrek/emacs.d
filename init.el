@@ -43,7 +43,7 @@
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
  '(display-battery-mode t)
  '(display-time-mode t)
  '(erc-fill-column 90)
@@ -69,7 +69,7 @@
  '(org-default-notes-file "~/org/notes.org")
  '(package-selected-packages
    (quote
-    (elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
+    (request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
  '(pulseaudio-control-volume-step "5%")
  '(show-paren-mode t)
  '(solarized-height-minus-1 1.0)
@@ -90,7 +90,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "mlss" :family "Anonymous Pro"))))
- '(mode-line ((t (:background "PaleGoldenrod" :foreground "black" :inverse-video nil :box (:line-width -1 :style released-button) :height 1.0))))
  '(show-paren-match ((t (:background "steel blue")))))
 
 
@@ -111,7 +110,8 @@
 ;; (package-install 'exwm)
 
 ;;; The All-Important Theme
-(load-theme 'solarized-light)
+(load-theme 'solarized-dark)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; EXWM Configuration
@@ -206,5 +206,11 @@
 (use-package elpy
   :ensure t
   :init
+  (add-hook 'python-mode-hook 'elpy-mode)
   (setq python-shell-interpreter "python3"
 	elpy-rpc-python-command "python3"))
+
+(use-package csv-mode
+  :ensure t)
+(use-package request
+  :ensure t)
