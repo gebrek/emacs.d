@@ -226,5 +226,14 @@
   :ensure t
   ;; :ensure-system hugo
   :config
-  (setq easy-hugo-basedir "~/org/classic")
-  )
+  (setq easy-hugo-basedir "~/org/classic"))
+
+(defun shutdown (arg)
+  (interactive "p")
+  (shell-command (format "shutdown %d" arg) "*Messages*"))
+(defun shutdown-now ()
+  (interactive)
+  (shell-command "shutdown now"))
+(defun shutdown-cancel ()
+  (interactive)
+  (shell-command "shutdown -c"))
