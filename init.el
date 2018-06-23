@@ -55,6 +55,7 @@
  '(menu-bar-mode nil)
  '(mu4e-maildir "/home/jacob/Maildir/Gmail")
  '(org-agenda-files (quote ("~/org/root.org")))
+ '(org-archive-location ".archive.org::")
  '(org-capture-templates
    (quote
     (("t" "todo" entry
@@ -69,7 +70,7 @@
  '(org-default-notes-file "~/org/notes.org")
  '(package-selected-packages
    (quote
-    (magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
+    (easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
  '(pulseaudio-control-volume-step "5%")
  '(show-paren-mode t)
  '(solarized-height-minus-1 1.0)
@@ -216,3 +217,14 @@
   :ensure t)
 (use-package request
   :ensure t)
+(use-package ace-window
+  :ensure t
+  :config
+  (setq aw-scope 'frame)
+  :bind ("C-x o" . 'ace-window))
+(use-package easy-hugo
+  :ensure t
+  ;; :ensure-system hugo
+  :config
+  (setq easy-hugo-basedir "~/org/classic")
+  )
