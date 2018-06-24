@@ -60,12 +60,14 @@
    (quote
     (("t" "todo" entry
       (file+headline "~/org/root.org" "Todo")
-      "** TODO %? %^G")
+      "** TODO %? %^G
+")
      ("n" "note" entry
       (file+headline "~/org/root.org" "Notes")
       "** %?
    - Note taken on %U
-   - %a "))))
+   - %a
+"))))
  '(org-datetree-add-timestamp (quote inactive))
  '(org-default-notes-file "~/org/notes.org")
  '(package-selected-packages
@@ -226,8 +228,11 @@
   :ensure t
   ;; :ensure-system hugo
   :config
-  (setq easy-hugo-basedir "~/org/classic"))
+  (setq easy-hugo-basedir "~/org/blog/"
+	easy-hugo-default-ext ".org"))
 
+
+;;; Power funcs
 (defun shutdown (arg)
   (interactive "p")
   (shell-command (format "shutdown %d" arg) "*Messages*"))
@@ -237,3 +242,18 @@
 (defun shutdown-cancel ()
   (interactive)
   (shell-command "shutdown -c"))
+(defun suspend ()
+  (interactive)
+  (shell-command "systemctl suspend"))
+
+(defun sudo-edit (&optional arg)
+  "Edit currently visited file as root.
+
+With a prefix ARG prompt for a file to visit.
+Will also prompt for a file to visit if current
+buffer is not visiting a file."
+  (interactive "P")
+  (if (or arg (not buffer-file-name))
+      (find-file (concat "/sudo:root@localhost:"
+                         (ido-read-file-name "Find file(as root): ")))
+    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))

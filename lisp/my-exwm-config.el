@@ -62,6 +62,8 @@
           ([?\C-n] . [down])
           ([?\C-a] . [home])
           ([?\C-e] . [end])
+	  ([?\M-<] . [C-home])
+	  ([?\M->] . [C-end])
           ([?\M-v] . [prior])
           ([?\C-v] . [next])
           ([?\C-d] . [delete])
