@@ -72,7 +72,7 @@
  '(org-default-notes-file "~/org/notes.org")
  '(package-selected-packages
    (quote
-    (easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
+    (rainbow-mode easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
  '(pulseaudio-control-volume-step "5%")
  '(show-paren-mode t)
  '(solarized-height-minus-1 1.0)
@@ -227,10 +227,14 @@
 (use-package easy-hugo
   :ensure t
   ;; :ensure-system hugo
+  :bind ("C-c b" . 'easy-hugo)
   :config
   (setq easy-hugo-basedir "~/org/blog/"
 	easy-hugo-default-ext ".org"))
 
+(use-package rainbow-mode
+  :ensure t
+  :hook (css-mode))
 
 ;;; Power funcs
 (defun shutdown (arg)
