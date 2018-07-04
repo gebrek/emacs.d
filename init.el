@@ -72,7 +72,7 @@
  '(org-default-notes-file "~/org/notes.org")
  '(package-selected-packages
    (quote
-    (rainbow-mode easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
+    (bongo dired-rsync rainbow-mode easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
  '(pulseaudio-control-volume-step "5%")
  '(show-paren-mode t)
  '(solarized-height-minus-1 1.0)
@@ -238,7 +238,7 @@
 
 ;;; Power funcs
 (defun shutdown (arg)
-  (interactive "p")
+  (interactive "nMinutes: ")
   (shell-command (format "shutdown %d" arg) "*Messages*"))
 (defun shutdown-now ()
   (interactive)
@@ -261,3 +261,9 @@ buffer is not visiting a file."
       (find-file (concat "/sudo:root@localhost:"
                          (ido-read-file-name "Find file(as root): ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
+(use-package dired-rsync
+  :ensure t
+  :bind (:map dired-mode-map
+	      ("Y" . 'dired-rsync)))
+(use-package bongo :ensure t)
