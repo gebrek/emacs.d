@@ -203,10 +203,10 @@
   (display-time-mode)
   (display-battery-mode))
 
-(use-package mu4e
-  :ensure-system-package html2text
-  :config
-  (setq mu4e-html2text-command "html2text -utf8 -width 72"))
+;; (use-package mu4e
+;;   :ensure-system-package html2text
+;;   :config
+;;   (setq mu4e-html2text-command "html2text -utf8 -width 72"))
 
 (use-package elpy
   :ensure t
@@ -267,3 +267,12 @@ buffer is not visiting a file."
   :bind (:map dired-mode-map
 	      ("Y" . 'dired-rsync)))
 (use-package bongo :ensure t)
+
+(defvar scrot-dir "/home/jacob/Pictures/scrot")
+(defun scrot ()
+  (interactive)
+  (shell-command (concat "scrot -e 'mv $f " scrot-dir "'")))
+
+(defun scrot-s ()
+  (interactive)
+  (shell-command (concat "scrot -s -e 'mv $f " scrot-dir "'")))
