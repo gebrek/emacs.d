@@ -72,7 +72,7 @@
  '(org-default-notes-file "~/org/notes.org")
  '(package-selected-packages
    (quote
-    (bongo dired-rsync rainbow-mode easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
+    (org-gcal bongo dired-rsync rainbow-mode easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
  '(pulseaudio-control-volume-step "5%")
  '(show-paren-mode t)
  '(solarized-height-minus-1 1.0)
@@ -186,7 +186,10 @@
   (add-hook 'org-mode-hook
 	    (lambda ()
 	      (flyspell-mode)
-	      (auto-fill-mode))))
+	      (auto-fill-mode)))
+  (use-package org-gcal :ensure t
+    ;; Client ID: 57356994780-b16iviqe25vsamd1iec7n51of8skfkbr.apps.googleusercontent.com 
+    ))
 
 (use-package smart-mode-line
   :ensure t
@@ -203,10 +206,11 @@
   (display-time-mode)
   (display-battery-mode))
 
-;; (use-package mu4e
-;;   :ensure-system-package html2text
-;;   :config
-;;   (setq mu4e-html2text-command "html2text -utf8 -width 72"))
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
+(use-package mu4e
+  :ensure-system-package html2text
+  :config
+  (setq mu4e-html2text-command "html2text -utf8 -width 72"))
 
 (use-package elpy
   :ensure t
@@ -276,3 +280,8 @@ buffer is not visiting a file."
 (defun scrot-s ()
   (interactive)
   (shell-command (concat "scrot -s -e 'mv $f " scrot-dir "'")))
+
+(defun celsius-to-fahrenheit (temp-c)
+  (+ (* temp-c 1.8) 32))
+(defun fahrenheit-to-celsius (temp-f)
+  (/ (- temp-f 32) 1.8))
