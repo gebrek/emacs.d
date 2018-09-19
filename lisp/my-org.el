@@ -97,3 +97,5 @@
 		 '("\\.pdf\\'" . (lambda (file link)
 				   (org-pdfview-open link))))))
 
+
+(plist-put org-format-latex-options :scale 1.5)
