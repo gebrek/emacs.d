@@ -66,12 +66,14 @@
 	  ([?\M->] . [C-end])
           ([?\M-v] . [prior])
           ([?\C-v] . [next])
-          ([?\C-d] . [delete])
-          ([?\C-k] . [S-end delete])
+	  ([?\M-f] . [C-right])
+	  ([?\M-b] . [C-left])
 	  ;; Basic editing
 	  ([?\C-w] . [?\C-x])
 	  ([?\M-w] . [?\C-c])
 	  ([?\C-y] . [?\C-v])
+	  ([?\C-d] . [delete])
+	  ([?\C-k] . [S-end delete])
 	  ;; Search
 	  ([?\C-s] . [?\C-f])))
   ;; Enable EXWM
