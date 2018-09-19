@@ -43,35 +43,61 @@
  '(battery-mode-line-format " %p %t")
  '(blink-matching-paren t)
  '(column-number-mode t)
+ '(compilation-message-face 'default)
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-normal-cursor-color "#839496")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
+ '(custom-enabled-themes '(manoj-dark))
  '(custom-safe-themes
-   (quote
-    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
+   '("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default))
  '(display-battery-mode t)
  '(display-time-mode t)
  '(erc-fill-column 90)
  '(erc-modules
-   (quote
-    (completion notifications spelling hl-nicks netsplit fill button match track readonly networks ring autojoin noncommands irccontrols move-to-prompt stamp menu list)))
+   '(completion notifications spelling hl-nicks netsplit fill button match track readonly networks ring autojoin noncommands irccontrols move-to-prompt stamp menu list))
  '(erc-notifications-icon
    "/usr/share/icons/Adwaita/48x48/status/user-available-symbolic.symbolic.png")
+ '(fci-rule-color "#073642")
+ '(highlight-changes-colors '("#d33682" "#6c71c4"))
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#002b36" 0.25)
+    '("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2")))
+ '(highlight-symbol-foreground-color "#93a1a1")
+ '(highlight-tail-colors
+   '(("#073642" . 0)
+     ("#546E00" . 20)
+     ("#00736F" . 30)
+     ("#00629D" . 50)
+     ("#7B6000" . 60)
+     ("#8B2C02" . 70)
+     ("#93115C" . 85)
+     ("#073642" . 100)))
+ '(hl-bg-colors
+   '("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00"))
+ '(hl-fg-colors
+   '("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36"))
+ '(hl-paren-colors '("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900"))
  '(inferior-lisp-program "sbcl" t)
+ '(magit-diff-use-overlays nil)
  '(menu-bar-mode nil)
  '(mu4e-maildir "/home/jacob/Maildir/Gmail")
+ '(nrepl-message-colors
+   '("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4"))
  '(openwith-associations
-   (quote
-    (("\\.pdf\\'" "mupdf"
+   '(("\\.pdf\\'" "mupdf"
       (file))
      ("\\.mp3\\'" "xmms"
       (file))
      ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer"
       ("-idx" file))
      ("\\.\\(?:jp?g\\|png\\)\\'" "display"
-      (file)))))
- '(org-agenda-files (quote ("~/org/gcal.org" "~/org/root.org")))
+      (file))))
+ '(org-agenda-files '("~/org/cs.org" "~/org/gcal.org" "~/org/root.org"))
  '(org-archive-location ".archive.org::")
  '(org-capture-templates
-   (quote
-    (("g" "gcal" entry
+   '(("g" "gcal" entry
       (file "~/org/gcal.org")
       "* %?
   %T" :time-prompt t)
@@ -93,16 +119,18 @@
       "* Protocol Validation :vupv:" :immediate-finish t :clock-in t :clock-keep t)
      ("3" "Clock in Lambda Calculus" entry
       (file "~/org/clock.org")
-      "* Lambda Calculus :uvalc:" :prepend t :clock-in t :clock-keep t))))
- '(org-datetree-add-timestamp (quote inactive))
+      "* Lambda Calculus :uvalc:" :prepend t :clock-in t :clock-keep t)))
+ '(org-datetree-add-timestamp 'inactive)
  '(org-default-notes-file "~/org/notes.org")
  '(org-indent-indentation-per-level 1)
  '(org-pretty-entities t)
  '(package-selected-packages
-   (quote
-    (djvu geiser racket-mode slime-company slime ruby-end ob-lfe lfe-mode company-inf-ruby enh-ruby-mode erlang alchemist elixir-mode openwith org-pdfview pdf-tools org-gcal bongo dired-rsync rainbow-mode easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm")))
+   '(djvu geiser racket-mode slime-company slime ruby-end ob-lfe lfe-mode company-inf-ruby enh-ruby-mode erlang alchemist elixir-mode openwith org-pdfview pdf-tools org-gcal bongo dired-rsync rainbow-mode easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm"))
+ '(pos-tip-background-color "#073642")
+ '(pos-tip-foreground-color "#93a1a1")
  '(pulseaudio-control-volume-step "5%")
  '(show-paren-mode t)
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(solarized-height-minus-1 1.0)
  '(solarized-height-plus-1 1.0)
  '(solarized-height-plus-2 1.0)
@@ -111,8 +139,38 @@
  '(solarized-high-contrast-mode-line nil)
  '(solarized-scale-org-headlines nil)
  '(solarized-use-variable-pitch nil)
+ '(term-default-bg-color "#002b36")
+ '(term-default-fg-color "#839496")
  '(text-scale-mode-step 1.1)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(vc-annotate-background nil)
+ '(vc-annotate-background-mode nil)
+ '(vc-annotate-color-map
+   '((20 . "#dc322f")
+     (40 . "#c8805d801780")
+     (60 . "#bec073400bc0")
+     (80 . "#b58900")
+     (100 . "#a5008e550000")
+     (120 . "#9d0091000000")
+     (140 . "#950093aa0000")
+     (160 . "#8d0096550000")
+     (180 . "#859900")
+     (200 . "#66aa9baa32aa")
+     (220 . "#57809d004c00")
+     (240 . "#48559e556555")
+     (260 . "#392a9faa7eaa")
+     (280 . "#2aa198")
+     (300 . "#28669833af33")
+     (320 . "#279993ccbacc")
+     (340 . "#26cc8f66c666")
+     (360 . "#268bd2")))
+ '(vc-annotate-very-old-color nil)
+ '(weechat-color-list
+   '(unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83"))
+ '(xterm-color-names
+   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
+ '(xterm-color-names-bright
+   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
 
 ;;; Faces set thru customize
 (custom-set-faces
@@ -134,14 +192,14 @@
       use-package-always-ensure nil)
 
 
-(package-initialize)
+;; (package-initialize)
 (package-install 'use-package)
 ;; (use-package use-package-ensure-system-package
 ;;   :ensure t)
 ;; (package-install 'exwm)
 
 ;;; The All-Important Theme
-(load-theme 'solarized-dark)
+(load-theme 'manoj-dark)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -306,7 +364,9 @@ buffer is not visiting a file."
 
 (use-package pdf-tools :ensure t
   :init
-  (pdf-tools-install))
+  (pdf-tools-install)
+  :config
+  (use-package pdf-virtual))
 
 (use-package openwith :ensure t
   :config
@@ -340,14 +400,21 @@ buffer is not visiting a file."
   (insert "€"))
 (global-set-key (kbd "C-c e") 'insert-euro)
 
+(defun override-slime-repl-bindings-with-paredit ()
+  (define-key slime-repl-mode-map
+    (read-kbd-macro paredit-backward-delete-key) nil))
+
 (use-package slime :ensure t
+  :bind (:map slime-mode-map
+  	      ("C-M-i" . 'slime-fuzzy-complete-symbol))
   :config
-  (setq slime-contribs '(slime-fancy)
+  (setq slime-contribs '(slime-fancy slime-repl slime-scratch slime-trace-dialog)
 	inferior-lisp-program "sbcl")
-  (defun override-slime-repl-bindings-with-paredit ()
-    (define-key slime-repl-mode-map
-      (read-kbd-macro paredit-backward-delete-key)
-      nil))
-  (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit
-	    )
+  (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
   (add-hook 'slime-repl-mode-hook 'paredit-mode))
+
+(use-package geiser :ensure t
+  :config
+  (add-hook 'geiser-mode-hook
+	    (lambda ()
+	      (paredit-mode))))
