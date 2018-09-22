@@ -94,7 +94,7 @@
       ("-idx" file))
      ("\\.\\(?:jp?g\\|png\\)\\'" "display"
       (file))))
- '(org-agenda-files '("~/org/cs.org" "~/org/gcal.org" "~/org/root.org"))
+ '(org-agenda-files '("~/org/gcal.org" "~/org/root.org"))
  '(org-archive-location ".archive.org::")
  '(org-capture-templates
    '(("g" "gcal" entry
@@ -125,7 +125,7 @@
  '(org-indent-indentation-per-level 1)
  '(org-pretty-entities t)
  '(package-selected-packages
-   '(djvu geiser racket-mode slime-company slime ruby-end ob-lfe lfe-mode company-inf-ruby enh-ruby-mode erlang alchemist elixir-mode openwith org-pdfview pdf-tools org-gcal bongo dired-rsync rainbow-mode easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm"))
+   '(notmuch netherlands-holidays djvu geiser racket-mode slime-company slime ruby-end ob-lfe lfe-mode company-inf-ruby enh-ruby-mode erlang alchemist elixir-mode openwith org-pdfview pdf-tools org-gcal bongo dired-rsync rainbow-mode easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm"))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(pulseaudio-control-volume-step "5%")
@@ -365,6 +365,40 @@ buffer is not visiting a file."
 (use-package pdf-tools :ensure t
   :init
   (pdf-tools-install)
+  (defun pdf-two-pages ()
+    (interactive)
+    (delete-other-windows)
+    (split-window-right)
+    (pdf-view-fit-width-to-window)
+    (other-window 1)
+    (pdf-view-fit-width-to-window)
+    (pdf-view-next-page)
+    (other-window 1))
+
+  (defun pdf-two-page-next ()
+    (interactive)
+    (pdf-view-next-page)
+    (pdf-view-next-page)
+    (other-window 1)
+    (pdf-view-next-page)
+    (pdf-view-next-page)
+    (other-window 1))
+
+  (defun pdf-two-page-prev ()
+    (interactive)
+    (pdf-view-previous-page)
+    (pdf-view-previous-page)
+    (other-window 1)
+    (pdf-view-previous-page)
+    (pdf-view-previous-page)
+    (other-window 1))
+
+  :bind
+  (:map pdf-view-mode-map
+	("x" . 'pdf-two-page-prev)
+	("c" . 'pdf-two-page-next)
+	("v" . 'pdf-two-pages))
+
   :config
   (use-package pdf-virtual))
 
