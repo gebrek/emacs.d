@@ -99,3 +99,9 @@
 
 
 (plist-put org-format-latex-options :scale 1.5)
+
+(use-package ox-gfm :ensure t)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((dot . t)))
