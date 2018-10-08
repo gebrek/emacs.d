@@ -43,6 +43,8 @@
  '(battery-mode-line-format " %p %t")
  '(blink-matching-paren t)
  '(column-number-mode t)
+ '(company-go-gocode-command "/home/jacob/go/bin/gocode")
+ '(company-go-show-annotation t)
  '(compilation-message-face 'default)
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
@@ -59,6 +61,8 @@
  '(erc-notifications-icon
    "/usr/share/icons/Adwaita/48x48/status/user-available-symbolic.symbolic.png")
  '(fci-rule-color "#073642")
+ '(go-eldoc-gocode "/home/jacob/go/bin/gocode")
+ '(go-fontify-function-calls t)
  '(highlight-changes-colors '("#d33682" "#6c71c4"))
  '(highlight-symbol-colors
    (--map
@@ -120,12 +124,27 @@
      ("3" "Clock in Lambda Calculus" entry
       (file "~/org/clock.org")
       "* Lambda Calculus :uvalc:" :prepend t :clock-in t :clock-keep t)))
+ '(org-confirm-babel-evaluate nil)
  '(org-datetree-add-timestamp 'inactive)
  '(org-default-notes-file "~/org/notes.org")
  '(org-indent-indentation-per-level 1)
  '(org-pretty-entities t)
+ '(org-src-lang-modes
+   '(("ocaml" . tuareg)
+     ("elisp" . emacs-lisp)
+     ("ditaa" . artist)
+     ("asymptote" . asy)
+     ("dot" . graphviz-dot)
+     ("sqlite" . sql)
+     ("calc" . fundamental)
+     ("C" . c)
+     ("cpp" . c++)
+     ("C++" . c++)
+     ("screen" . shell-script)
+     ("shell" . sh)
+     ("bash" . sh)))
  '(package-selected-packages
-   '(notmuch netherlands-holidays djvu geiser racket-mode slime-company slime ruby-end ob-lfe lfe-mode company-inf-ruby enh-ruby-mode erlang alchemist elixir-mode openwith org-pdfview pdf-tools org-gcal bongo dired-rsync rainbow-mode easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm"))
+   '(flycheck-golangci-lint flycheck-gometalinter flymake-go popwin company-go go-complete go-direx go-eldoc go-mode go-scratch company-erlang ox-gfm eimp graphviz-dot-mode notmuch netherlands-holidays djvu geiser racket-mode slime-company slime ruby-end ob-lfe lfe-mode company-inf-ruby enh-ruby-mode erlang alchemist elixir-mode openwith org-pdfview pdf-tools org-gcal bongo dired-rsync rainbow-mode easy-hugo org ace-window magithub request csv-mode elpy use-package-ensure-system-package pulseaudio-control solarized-theme smart-mode-line system-packages ledger-mode magit which-key erc-hl-nicks paredit-mode paredit use-package exwm "exwm"))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(pulseaudio-control-volume-step "5%")
@@ -179,6 +198,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "mlss" :family "Anonymous Pro"))))
+ '(font-lock-function-name-face ((t (:foreground "mediumspringgreen" :weight bold :height 1.0))))
  '(show-paren-match ((t (:background "steel blue")))))
 
 
@@ -413,6 +433,7 @@ buffer is not visiting a file."
   (use-package alchemist :ensure t)
   :config
   (company-mode)
+  (electric-pair-mode)
   (add-hook 'alchemist-iex-mode-hook 'company-mode)
   (add-hook 'alchemist-mode-hook 'ruby-end-mode)
   (add-hook 'alchemist-mode-hook 'company-mode)
@@ -421,7 +442,12 @@ buffer is not visiting a file."
 	      (add-hook 'before-save-hook 'elixir-format nil t))))
 
 (use-package erlang :ensure t
+  :bind (:map erlang-mode-map
+	      ("C-M-i" . 'company-erlang))
+  :init
+  (use-package company-erlang)
   :config
+  (company-mode)
   (add-hook 'erlang-mode-hook
 	    (lambda ()
 	      (define-key erlang-mode-map (kbd "M-,") 'alchemist-goto-jump-back))))
@@ -452,3 +478,28 @@ buffer is not visiting a file."
   (add-hook 'geiser-mode-hook
 	    (lambda ()
 	      (paredit-mode))))
+
+
+(use-package go-mode :ensure t
+  :bind (:map go-mode-map
+	      ("C-M-i" . 'company-go))
+  :init
+  (use-package company :ensure t)
+  (use-package company-go :ensure t)
+  :config
+  (setq company-tooltip-limit 20
+	company-idle-delay .3
+	company-echo-delay 0
+	company-begin-commands '(self-insert-command))
+  (add-hook 'go-mode-hook
+	    (lambda ()
+	      (set (make-local-variable 'company-backends) '(company-go))
+	      (company-mode)
+	      (go-eldoc-setup))
+	    (set (make-local-variable 'before-save-hook) #'gofmt)))
+
+(use-package popwin :ensure t
+  :config
+  (popwin-mode 1)
+  (global-set-key (kbd "C-z") popwin:keymap))
+
